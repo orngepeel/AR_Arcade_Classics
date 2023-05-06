@@ -1,6 +1,6 @@
 {
-    "name": "Unity.XR.ARFoundation.Samples",
-    "rootNamespace": "UnityEngine.XR.ARFoundation.Samples",
+    "name": "Unity.XR.ARFoundation.ARcadeClassics",
+    "rootNamespace": "",
     "references": [
         "Unity.XR.ARFoundation",
         "Unity.InputSystem",
@@ -10,7 +10,6 @@
         "Unity.XR.Interaction.Toolkit",
         "Unity.XR.Management",
         "Unity.XR.ARKit",
-        "Unity.XR.ARKit.FaceTracking",
         "Unity.XR.ARCore"
     ],
     "includePlatforms": [],

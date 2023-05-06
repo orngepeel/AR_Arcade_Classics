@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace UnityEngine.XR.ARFoundation.Samples
+namespace UnityEngine.XR.ARFoundation.ARcadeClassics
 {
     /// <summary>
     /// Controls the Samples Menu UI and scene loading functionality.
