@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-namespace UnityEngine.XR.ARFoundation.Samples
+namespace UnityEngine.XR.ARFoundation.ARcadeClassics
 {
     public class SceneUtility : MonoBehaviour
     {
