@@ -7,16 +7,17 @@ using UnityEngine.SceneManagement;
 namespace UnityEngine.XR.ARFoundation.ARcadeClassics
 {
     /// <summary>
-    /// Controls the Samples Menu UI and scene loading functionality.
+    /// Controls the Main Menu UI and scene loading functionality.
     /// </summary>
     /// <remarks>
     /// This class assumes that you only use it in a single Menu scene in the project, that this on the Main Menu
     /// GameObject, that all menu GameObjects are siblings of the Main Menu, and that all menu GameObjects have unique
     /// names.
+    /// Based on AR Foundation Samples: https://github.com/Unity-Technologies/arfoundation-samples
     /// </remarks>
     public class ARSceneSelectUI : MonoBehaviour
     {
-        const string k_DefaultTitleLabel = "AR Foundation Samples";
+        const string k_DefaultTitleLabel = "[AR]cade Classics";
 
         static GameObject s_SelectedMenu;
 
@@ -93,7 +94,7 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
 
         public void SetTitleLabelMenuName(string menuName)
         {
-            m_TitleLabel.text = $"Samples / {menuName}";
+            m_TitleLabel.text = $"{menuName}";
             s_SelectedMenuInfo.menuName = menuName;
         }
 
