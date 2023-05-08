@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 3608022}
   - component: {fileID: 3608021}
   - component: {fileID: 3608020}
+  - component: {fileID: 3608024}
+  - component: {fileID: 3608023}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -187,6 +189,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3608023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 11400000, guid: 7625f7c930a4bf2bebb69eb70ea5caa3,
+    type: 2}
+  m_MaxNumberOfMovingImages: 0
+  m_TrackedImagePrefab: {fileID: 7414126791596113512, guid: fe573e7abb8af466791f07600c0785e3,
+    type: 3}
+--- !u!114 &3608024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520bb47c46cf8624fafb307b7d1b862a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 1359452150}
 --- !u!1 &132425157
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +270,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 432991383}
     m_Modifications:
     - target: {fileID: 1679323505666513508, guid: 3614a3bf97cfbeb429597e0af87cf438,
         type: 3}
@@ -258,7 +290,7 @@ PrefabInstance:
     - target: {fileID: 4253203220149208952, guid: 3614a3bf97cfbeb429597e0af87cf438,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4253203220149208952, guid: 3614a3bf97cfbeb429597e0af87cf438,
         type: 3}
@@ -313,17 +345,17 @@ PrefabInstance:
     - target: {fileID: 4253203220149208952, guid: 3614a3bf97cfbeb429597e0af87cf438,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4253203220149208952, guid: 3614a3bf97cfbeb429597e0af87cf438,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4253203220149208952, guid: 3614a3bf97cfbeb429597e0af87cf438,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4253203220149208952, guid: 3614a3bf97cfbeb429597e0af87cf438,
         type: 3}
@@ -363,6 +395,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 421953157}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &421953159 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4253203220149208952, guid: 3614a3bf97cfbeb429597e0af87cf438,
+    type: 3}
+  m_PrefabInstance: {fileID: 421953157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &432991379
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +413,7 @@ GameObject:
   - component: {fileID: 432991382}
   - component: {fileID: 432991381}
   - component: {fileID: 432991380}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +492,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 421953159}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -641,7 +680,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021140232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1176, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
