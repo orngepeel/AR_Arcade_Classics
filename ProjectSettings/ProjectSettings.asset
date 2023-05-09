@@ -498,7 +498,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: Camera Required for AR.
+  cameraUsageDescription: Camera required for AR
   locationUsageDescription: 
   microphoneUsageDescription: 
   bluetoothUsageDescription: 
