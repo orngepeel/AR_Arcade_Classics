@@ -10,6 +10,9 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+# Build settings
+/[Pp]roject[Ss]ettings/EditorBuildSettings.asset
+
 # Simulation environments do not need to be in the repo
 /[Ss]imulation[Ee]nvironments/
 
