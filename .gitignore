@@ -13,6 +13,9 @@
 # Simulation environments do not need to be in the repo
 /[Ss]imulation[Ee]nvironments/
 
+# Build settings
+/[Pp]roject[Ss]ettings/EditorBuildSettings.asset
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
