@@ -848,11 +848,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 76d3ee91-f0f8-439e-a8d9-ddfaa0930dd4
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: AR_Arcade_Classics
+  organizationId: orngepeel
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
