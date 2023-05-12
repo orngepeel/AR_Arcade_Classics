@@ -16,7 +16,7 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
     /// </remarks>
     public class ARSceneSelectUI : MonoBehaviour
     {
-        const string k_DefaultTitleLabel = "AR Foundation Samples";
+        const string k_DefaultTitleLabel = "[AR]cade Classics";
 
         static GameObject s_SelectedMenu;
 
