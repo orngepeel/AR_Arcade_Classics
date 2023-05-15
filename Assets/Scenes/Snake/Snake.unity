@@ -358,12 +358,12 @@ PrefabInstance:
     - target: {fileID: 6004065853008652923, guid: 076775729dc8baf4f8674048f47395d3,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6004065853008652923, guid: 076775729dc8baf4f8674048f47395d3,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6004065853008652923, guid: 076775729dc8baf4f8674048f47395d3,
         type: 3}
