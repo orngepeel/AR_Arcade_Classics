@@ -38,6 +38,19 @@ public class ImageAnchorCreator : MonoBehaviour
 
     private void SaveAnchor(ARAnchor anchor)
     {
-        PlayerPrefs.SetString(anchorKey, anchor.trackableId.ToString());
+        string positionKey = anchorKey + "Position";
+        string rotationKey = anchorKey + "Rotation";
+        PlayerPrefs.SetString(positionKey, Vector3ToString(anchor.transform.position));
+        PlayerPrefs.SetString(rotationKey, QuaternionToString(anchor.transform.rotation));
+    }
+
+    private string Vector3ToString(Vector3 vector)
+    {
+        return vector.x + "," + vector.y + "," + vector.z;
+    }
+
+    private string QuaternionToString(Quaternion quaternion)
+    {
+        return quaternion.x + "," + quaternion.y + "," + quaternion.z + "," + quaternion.w;
     }
 }
