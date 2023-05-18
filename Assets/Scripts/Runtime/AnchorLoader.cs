@@ -25,6 +25,7 @@ public class AnchorLoader : MonoBehaviour
     {
         LoadAnchor();
     }
+
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
         foreach (var trackedImage in eventArgs.updated)
@@ -46,19 +47,24 @@ public class AnchorLoader : MonoBehaviour
 
             if (toggleSpawn == true)
             {
+                if (anchor == null)
+                {
+
                 // Instantiate the anchor at the saved position
                 GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
                 anchor = instantiatedObject.GetComponent<ARAnchor>();
 
                 // Attach the anchor to the AR session origin
                 anchor.transform.SetParent(anchorParent.transform);
+                }
+                else
+                {
+                    // Move the existing anchor to the saved position
+                    anchor.transform.position = savedPosition;
+                    anchor.transform.rotation = savedRotation;
+                }
+                
                 toggleSpawn = false;
-            }
-            else
-            {
-                // Move the existing anchor to the saved position
-                anchor.transform.position = savedPosition;
-                anchor.transform.rotation = savedRotation;
             }
         }
     }
