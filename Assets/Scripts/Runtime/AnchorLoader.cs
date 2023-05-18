@@ -12,31 +12,14 @@ public class AnchorLoader : MonoBehaviour
     private string anchorPositionKey = "SavedAnchorPosition";
     private string anchorRotationKey = "SavedAnchorRotation";
 
-    private bool toggleSpawn;
-
     private void Start()
-    {
-        trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-        trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-        toggleSpawn = true;
-    }
-
-    private void Update()
     {
         LoadAnchor();
     }
 
-    private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
+    private void Update()
     {
-        foreach (var trackedImage in eventArgs.updated)
-        {
-            if (trackedImage.referenceImage.name == "qrcode")
-            {
-                // Update the anchor's position based on the tracked image's location
-                PlayerPrefs.SetString(anchorPositionKey, Vector3ToString(trackedImage.transform.position));
-                PlayerPrefs.SetString(anchorRotationKey, QuaternionToString(trackedImage.transform.rotation));
-            }
-        }
+        UpdateAnchor();
     }
 
     private void LoadAnchor()
@@ -46,21 +29,35 @@ public class AnchorLoader : MonoBehaviour
             Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
             Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
 
-            if (toggleSpawn == true)
-            {
-                // Instantiate the anchor at the saved position
-                GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
-                ARAnchor anchor = instantiatedObject.GetComponent<ARAnchor>();
+            // Instantiate the anchor at the saved position
+            GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
+            ARAnchor anchor = instantiatedObject.GetComponent<ARAnchor>();
 
-                // Attach the anchor to the AR session origin
-                anchor.transform.SetParent(anchorParent.transform);
-                toggleSpawn = false;
-            }
-            else
+            // Attach the anchor to the AR session origin
+            anchor.transform.SetParent(anchorParent.transform);
+        }
+    }
+
+    private void UpdateAnchor()
+    {
+        foreach (var trackedImage in trackedImageManager.trackables)
+        {
+            if (trackedImage.referenceImage.name == "qrcode")
             {
-                // Move the existing anchor to the saved position
-                anchor.transform.position = savedPosition;
-                anchor.transform.rotation = savedRotation;
+                // Get the updated position and rotation of the tracked image
+                Vector3 updatedPosition = trackedImage.transform.position;
+                Quaternion updatedRotation = trackedImage.transform.rotation;
+
+                // Update the anchor position and rotation accordingly
+                anchor.transform.position = updatedPosition;
+                anchor.transform.rotation = updatedRotation;
+
+                // Save the updated anchor position and rotation for persistence
+                PlayerPrefs.SetString(anchorPositionKey, Vector3ToString(updatedPosition));
+                PlayerPrefs.SetString(anchorRotationKey, QuaternionToString(updatedRotation));
+
+                // Break the loop as we found the desired tracked image
+                break;
             }
         }
     }
