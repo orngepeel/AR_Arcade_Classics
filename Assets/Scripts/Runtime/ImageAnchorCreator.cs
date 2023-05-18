@@ -32,14 +32,22 @@ public class ImageAnchorCreator : MonoBehaviour
         ARAnchor anchor = gameObject.AddComponent<ARAnchor>();
         anchor.transform.SetPositionAndRotation(position, rotation);
         SaveAnchor(anchor);
-
-        Instantiate(anchorPrefab, anchor.transform.position, anchor.transform.rotation);
     }
 
     private void SaveAnchor(ARAnchor anchor)
     {
         string positionKey = anchorKey + "Position";
         string rotationKey = anchorKey + "Rotation";
+        // Get the position of the tracked image
+        ARTrackedImage trackedImage = GetComponent<ARTrackedImage>();
+        Vector3 imagePosition = trackedImage.transform.position;
+        Quaternion imageRotation = trackedImage.transform.rotation;
+
+        // Update the anchor's position
+        anchor.transform.position = imagePosition;
+        anchor.transform.rotation = imageRotation;
+
+        // Save the updated anchor position and rotation
         PlayerPrefs.SetString(positionKey, Vector3ToString(anchor.transform.position));
         PlayerPrefs.SetString(rotationKey, QuaternionToString(anchor.transform.rotation));
     }
