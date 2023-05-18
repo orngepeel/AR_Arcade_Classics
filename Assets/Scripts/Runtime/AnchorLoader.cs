@@ -74,6 +74,7 @@ public class AnchorLoader : MonoBehaviour
                 // Break the loop as we found the desired tracked image
                 break;
             }
+        }
     }
     
     private Vector3 StringToVector3(string serializedVector)
