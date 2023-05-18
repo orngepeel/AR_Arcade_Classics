@@ -12,10 +12,13 @@ public class AnchorLoader : MonoBehaviour
     private string anchorPositionKey = "SavedAnchorPosition";
     private string anchorRotationKey = "SavedAnchorRotation";
 
+    private bool toggleSpawn;
+
     private void Start()
     {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
+        toggleSpawn = true;
     }
 
     private void Update()
@@ -43,7 +46,7 @@ public class AnchorLoader : MonoBehaviour
             Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
             Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
 
-            if (anchor == null)
+            if (toggleSpawn == true)
             {
                 // Instantiate the anchor at the saved position
                 GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
@@ -51,6 +54,7 @@ public class AnchorLoader : MonoBehaviour
 
                 // Attach the anchor to the AR session origin
                 anchor.transform.SetParent(anchorParent.transform);
+                toggleSpawn = false;
             }
             else
             {
