@@ -14,14 +14,8 @@ public class AnchorLoader : MonoBehaviour
 
     private void Start()
     {
-        LoadAnchor();
-        trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-    }
-
-    private void Update()
-    {
-        UpdateAnchor();
+        LoadAnchor();
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
@@ -30,9 +24,15 @@ public class AnchorLoader : MonoBehaviour
         {
             if (trackedImage.referenceImage.name == "qrcode")
             {
-                // Update the anchor's position based on the tracked image's location
                 PlayerPrefs.SetString(anchorPositionKey, Vector3ToString(trackedImage.transform.position));
                 PlayerPrefs.SetString(anchorRotationKey, QuaternionToString(trackedImage.transform.rotation));
+
+                // Move the existing anchor to the updated position and rotation
+                if (anchor != null)
+                {
+                    anchor.transform.position = trackedImage.transform.position;
+                    anchor.transform.rotation = trackedImage.transform.rotation;
+                }
             }
         }
     }
@@ -44,37 +44,20 @@ public class AnchorLoader : MonoBehaviour
             Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
             Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
 
-            // Instantiate the anchor at the saved position
-            GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
-            ARAnchor anchor = instantiatedObject.GetComponent<ARAnchor>();
-
-            // Attach the anchor to the AR session origin
-            anchor.transform.SetParent(anchorParent.transform);
-        }
-    }
-
-    private void UpdateAnchor()
-    {
-        Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
-        Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
-                
-        anchor.transform.rotation = savedRotation;
-        anchor.transform.position = savedPosition;
-
-        foreach (var trackedImage in trackedImageManager.trackables)
-        {
-            if (trackedImage.referenceImage.name == "qrcode")
+            if (anchor == null)
             {
-                // Get the updated position and rotation of the tracked image
-                Vector3 updatedPosition = trackedImage.transform.position;
-                Quaternion updatedRotation = trackedImage.transform.rotation;    
+                // Instantiate the anchor at the saved position
+                GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
+                anchor = instantiatedObject.GetComponent<ARAnchor>();
 
-                // Save the updated anchor position and rotation for persistence
-                PlayerPrefs.SetString(anchorPositionKey, Vector3ToString(updatedPosition));
-                PlayerPrefs.SetString(anchorRotationKey, QuaternionToString(updatedRotation));
-
-                // Break the loop as we found the desired tracked image
-                break;
+                // Attach the anchor to the AR session origin
+                anchor.transform.SetParent(anchorParent.transform);
+            }
+            else
+            {
+                // Move the existing anchor to the saved position
+                anchor.transform.position = savedPosition;
+                anchor.transform.rotation = savedRotation;
             }
         }
     }
