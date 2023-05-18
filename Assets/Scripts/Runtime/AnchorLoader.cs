@@ -7,7 +7,7 @@ public class AnchorLoader : MonoBehaviour
     public ARAnchorManager anchorManager;
     public GameObject anchorPrefab;
     private ARAnchor anchor;
-    private GameObject arSessionOrigin;
+    public GameObject anchorParent;
 
     private string anchorPositionKey = "SavedAnchorPosition";
     private string anchorRotationKey = "SavedAnchorRotation";
@@ -16,8 +16,6 @@ public class AnchorLoader : MonoBehaviour
     {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-
-        arSessionOrigin = FindObjectOfType<ARSessionOrigin>().gameObject;
     }
 
     private void Update()
@@ -45,10 +43,21 @@ public class AnchorLoader : MonoBehaviour
             Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
             Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
 
-            // Instantiate the anchor at the saved position
-            GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
+            if (anchor == null)
+            {
+                // Instantiate the anchor at the saved position
+                GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
+                ARAnchor anchor = instantiatedObject.GetComponent<ARAnchor>();
 
-            ARAnchor anchor = instantiatedObject.GetComponent<ARAnchor>();
+                // Attach the anchor to the AR session origin
+                anchor.transform.SetParent(anchorParent.transform);
+            }
+            else
+            {
+                // Move the existing anchor to the saved position
+                anchor.transform.position = savedPosition;
+                anchor.transform.rotation = savedRotation;
+            }
         }
     }
     
