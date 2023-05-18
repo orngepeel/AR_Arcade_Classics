@@ -30,7 +30,12 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         public void BackButtonPressed()
         {
             if (Application.CanStreamedLevelBeLoaded("Menu"))
+            {
                 SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+                PlayerPrefs.DeleteKey("SavedAnchorPosition");
+                PlayerPrefs.DeleteKey("SavedAnchorRotation");
+            }
+
         }
     }
 }
