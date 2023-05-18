@@ -12,31 +12,31 @@ public class AnchorLoader : MonoBehaviour
     private string anchorPositionKey = "SavedAnchorPosition";
     private string anchorRotationKey = "SavedAnchorRotation";
 
+    private bool toggleSpawn;
+
     private void Start()
     {
+        trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-        LoadAnchor();
+        toggleSpawn = true;
     }
 
+    private void Update()
+    {
+        LoadAnchor();
+    }
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
         foreach (var trackedImage in eventArgs.updated)
         {
             if (trackedImage.referenceImage.name == "qrcode")
             {
+                // Update the anchor's position based on the tracked image's location
                 PlayerPrefs.SetString(anchorPositionKey, Vector3ToString(trackedImage.transform.position));
                 PlayerPrefs.SetString(anchorRotationKey, QuaternionToString(trackedImage.transform.rotation));
-
-                // Move the existing anchor to the updated position and rotation
-                if (anchor != null)
-                {
-                    anchor.transform.position = trackedImage.transform.position;
-                    anchor.transform.rotation = trackedImage.transform.rotation;
-                }
             }
         }
     }
-
     private void LoadAnchor()
     {
         if (PlayerPrefs.HasKey(anchorPositionKey) && PlayerPrefs.HasKey(anchorRotationKey))
@@ -44,7 +44,7 @@ public class AnchorLoader : MonoBehaviour
             Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
             Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
 
-            if (anchor == null)
+            if (toggleSpawn == true)
             {
                 // Instantiate the anchor at the saved position
                 GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
@@ -52,6 +52,7 @@ public class AnchorLoader : MonoBehaviour
 
                 // Attach the anchor to the AR session origin
                 anchor.transform.SetParent(anchorParent.transform);
+                toggleSpawn = false;
             }
             else
             {
