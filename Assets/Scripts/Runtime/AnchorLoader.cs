@@ -14,9 +14,9 @@ public class AnchorLoader : MonoBehaviour
 
     private void Start()
     {
+        LoadAnchor();
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-        LoadAnchor();
     }
 
     private void Update()
@@ -55,17 +55,19 @@ public class AnchorLoader : MonoBehaviour
 
     private void UpdateAnchor()
     {
+        Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
+        Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
+                
+        anchor.transform.rotation = savedRotation;
+        anchor.transform.position = savedPosition;
+
         foreach (var trackedImage in trackedImageManager.trackables)
         {
             if (trackedImage.referenceImage.name == "qrcode")
             {
                 // Get the updated position and rotation of the tracked image
                 Vector3 updatedPosition = trackedImage.transform.position;
-                Quaternion updatedRotation = trackedImage.transform.rotation;
-
-                // Update the anchor position and rotation accordingly
-                anchor.transform.position = updatedPosition;
-                anchor.transform.rotation = updatedRotation;
+                Quaternion updatedRotation = trackedImage.transform.rotation;    
 
                 // Save the updated anchor position and rotation for persistence
                 PlayerPrefs.SetString(anchorPositionKey, Vector3ToString(updatedPosition));
