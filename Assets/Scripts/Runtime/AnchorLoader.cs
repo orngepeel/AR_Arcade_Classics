@@ -14,12 +14,27 @@ public class AnchorLoader : MonoBehaviour
 
     private void Start()
     {
+        trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
+        trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
         LoadAnchor();
     }
 
     private void Update()
     {
         UpdateAnchor();
+    }
+
+    private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
+    {
+        foreach (var trackedImage in eventArgs.updated)
+        {
+            if (trackedImage.referenceImage.name == "qrcode")
+            {
+                // Update the anchor's position based on the tracked image's location
+                PlayerPrefs.SetString(anchorPositionKey, Vector3ToString(trackedImage.transform.position));
+                PlayerPrefs.SetString(anchorRotationKey, QuaternionToString(trackedImage.transform.rotation));
+            }
+        }
     }
 
     private void LoadAnchor()
@@ -59,7 +74,6 @@ public class AnchorLoader : MonoBehaviour
                 // Break the loop as we found the desired tracked image
                 break;
             }
-        }
     }
     
     private Vector3 StringToVector3(string serializedVector)
