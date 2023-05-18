@@ -66,7 +66,6 @@ public class AnchorLoader : MonoBehaviour
             }
         }
     }
-}
     
     private Vector3 StringToVector3(string serializedVector)
     {
