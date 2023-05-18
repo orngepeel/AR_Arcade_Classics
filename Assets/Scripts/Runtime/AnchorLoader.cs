@@ -4,28 +4,26 @@ using UnityEngine.XR.ARFoundation;
 public class AnchorLoader : MonoBehaviour
 {
     public ARTrackedImageManager trackedImageManager;
+    public ARAnchorManager anchorManager;
     public GameObject anchorPrefab;
+    private ARAnchor anchor;
     public GameObject anchorParent;
 
     private string anchorPositionKey = "SavedAnchorPosition";
     private string anchorRotationKey = "SavedAnchorRotation";
 
-    private ARAnchor anchor;
-    private Vector3 savedPosition;
-    private Quaternion savedRotation;
-    private bool isAnchorLoaded;
+    private bool toggleSpawn;
 
     private void Start()
     {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-        isAnchorLoaded = false;
+        toggleSpawn = true;
     }
 
     private void Update()
     {
-        if (!isAnchorLoaded)
-            LoadAnchor();
+        LoadAnchor();
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
@@ -34,35 +32,39 @@ public class AnchorLoader : MonoBehaviour
         {
             if (trackedImage.referenceImage.name == "qrcode")
             {
-                // Update the saved position and rotation
-                savedPosition = trackedImage.transform.position;
-                savedRotation = trackedImage.transform.rotation;
+                // Update the anchor's position based on the tracked image's location
+                PlayerPrefs.SetString(anchorPositionKey, Vector3ToString(trackedImage.transform.position));
+                PlayerPrefs.SetString(anchorRotationKey, QuaternionToString(trackedImage.transform.rotation));
             }
         }
     }
-
     private void LoadAnchor()
     {
-        if (savedPosition != Vector3.zero && savedRotation != Quaternion.identity)
+        if (PlayerPrefs.HasKey(anchorPositionKey) && PlayerPrefs.HasKey(anchorRotationKey))
         {
-            if (anchor == null)
+            Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
+            Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
+
+            if (toggleSpawn == true)
             {
+                if (anchor == null)
+                {
+
                 // Instantiate the anchor at the saved position
                 GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
                 anchor = instantiatedObject.GetComponent<ARAnchor>();
 
                 // Attach the anchor to the AR session origin
                 anchor.transform.SetParent(anchorParent.transform);
-
-                isAnchorLoaded = true;
-            }
-            else
-            {
-                // Move the existing anchor to the saved position
-                anchor.transform.position = savedPosition;
-                anchor.transform.rotation = savedRotation;
-
-                isAnchorLoaded = true;
+                }
+                else
+                {
+                    // Move the existing anchor to the saved position
+                    anchor.transform.position = savedPosition;
+                    anchor.transform.rotation = savedRotation;
+                }
+                
+                toggleSpawn = false;
             }
         }
     }
