@@ -12,18 +12,13 @@ public class AnchorLoader : MonoBehaviour
     private string anchorPositionKey = "SavedAnchorPosition";
     private string anchorRotationKey = "SavedAnchorRotation";
 
-    private bool toggleSpawn;
+    private Vector3 lastPosition;
+    private Quaternion lastRotation;
 
     private void Start()
     {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-        toggleSpawn = true;
-    }
-
-    private void Update()
-    {
-        LoadAnchor();
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
@@ -35,36 +30,28 @@ public class AnchorLoader : MonoBehaviour
                 // Update the anchor's position based on the tracked image's location
                 PlayerPrefs.SetString(anchorPositionKey, Vector3ToString(trackedImage.transform.position));
                 PlayerPrefs.SetString(anchorRotationKey, QuaternionToString(trackedImage.transform.rotation));
-            }
-        }
-    }
-    private void LoadAnchor()
-    {
-        if (PlayerPrefs.HasKey(anchorPositionKey) && PlayerPrefs.HasKey(anchorRotationKey))
-        {
-            Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
-            Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
 
-            if (toggleSpawn == true)
-            {
-                if (anchor == null)
+                // Store the latest position and rotation
+                lastPosition = trackedImage.transform.position;
+                lastRotation = trackedImage.transform.rotation;
+
+                // Update the anchor if it exists
+                if (anchor != null)
                 {
-
-                // Instantiate the anchor at the saved position
-                GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
-                anchor = instantiatedObject.GetComponent<ARAnchor>();
-
-                // Attach the anchor to the AR session origin
-                anchor.transform.SetParent(anchorParent.transform);
+                    anchor.transform.position = lastPosition;
+                    anchor.transform.rotation = lastRotation;
                 }
                 else
                 {
-                    // Move the existing anchor to the saved position
-                    anchor.transform.position = savedPosition;
-                    anchor.transform.rotation = savedRotation;
+                    // Instantiate the anchor at the saved position
+                    Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
+                    Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
+                    GameObject instantiatedObject = Instantiate(anchorPrefab, savedPosition, savedRotation);
+                    anchor = instantiatedObject.GetComponent<ARAnchor>();
+                    anchor.transform.SetParent(anchorParent.transform);
                 }
-                
-                toggleSpawn = false;
+
+                break; // Exit the loop after processing the first tracked image
             }
         }
     }
