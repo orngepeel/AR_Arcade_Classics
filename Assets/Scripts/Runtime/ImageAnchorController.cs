@@ -3,42 +3,63 @@ using UnityEngine.XR.ARFoundation;
 
 public class ImageAnchorController : MonoBehaviour
 {
-    [SerializeField] public GameObject anchorPrefab;
+    [SerializeField] private ARTrackedImageManager trackedImageManager;
+    [SerializeField] private GameObject anchorPrefab;
     [SerializeField] public GameObject[] inactiveElements;
     [SerializeField] public string specificReferenceImageName;
 
-    private void Start()
+    private void OnEnable()
     {
-        ARTrackedImageManager trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
+    }
+
+    private void OnDisable()
+    {
+        trackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        foreach (var addedImage in eventArgs.added)
+        foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
-            // Check if the added image's name matches the specific reference image name
-            if (addedImage.referenceImage.name == specificReferenceImageName)
+            if (trackedImage.referenceImage.name == specificReferenceImageName)
             {
-                // Instantiate a new anchor prefab
-                GameObject anchorObject = Instantiate(anchorPrefab, addedImage.transform.position, addedImage.transform.rotation);
-                // Attach the anchor object to the tracked image
-                anchorObject.transform.SetParent(addedImage.transform);
-
-                // Activate and move the inactive elements to be centered on the anchor
-                foreach (var element in inactiveElements)
-                {
-                    element.SetActive(true);
-                    element.transform.position = anchorObject.transform.position;
-                    element.transform.rotation = anchorObject.transform.rotation;
-                }
+                CreateAnchor(trackedImage);
             }
         }
 
-        foreach (var removedImage in eventArgs.removed)
+        foreach (ARTrackedImage trackedImage in eventArgs.updated)
         {
-            // Destroy the anchor object when the tracked image is removed
-            Destroy(removedImage.transform.GetChild(0).gameObject);
+            if (trackedImage.referenceImage.name == specificReferenceImageName)
+            {
+                UpdateAnchor(trackedImage);
+            }
+        }
+    }
+
+    private void CreateAnchor(ARTrackedImage trackedImage)
+    {
+        GameObject anchorObject = Instantiate(anchorPrefab, trackedImage.transform.position, trackedImage.transform.rotation);
+
+        foreach (var element in inactiveElements)
+        {
+            element.SetActive(true);
+            element.transform.position = anchorObject.transform.position;
+            element.transform.rotation = anchorObject.transform.rotation;
+        }
+    }
+
+    private void UpdateAnchor(ARTrackedImage trackedImage)
+    {
+        // Update the anchor's position and rotation to match the tracked image
+        GameObject anchorObject = trackedImage.transform.GetChild(0).gameObject;
+        anchorObject.transform.position = trackedImage.transform.position;
+        anchorObject.transform.rotation = trackedImage.transform.rotation;
+
+        foreach (var element in inactiveElements)
+        {
+            element.transform.position = anchorObject.transform.position;
+            element.transform.rotation = anchorObject.transform.rotation;
         }
     }
 }
