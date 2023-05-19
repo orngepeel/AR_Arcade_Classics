@@ -20,19 +20,23 @@ public class ImageAnchorController : MonoBehaviour
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        foreach (ARTrackedImage trackedImage in eventArgs.added)
+        foreach (var newImage in eventArgs.added)
         {
-            if (trackedImage.referenceImage.name == specificReferenceImageName)
+            // Handle added event
+            if (newImage.referenceImage.name == specificReferenceImageName)
             {
-                CreateAnchor(trackedImage);
+                CreateAnchor(newImage);
+                break;
             }
         }
 
-        foreach (ARTrackedImage trackedImage in eventArgs.updated)
+        foreach (var updatedImage in eventArgs.updated)
         {
-            if (trackedImage.referenceImage.name == specificReferenceImageName)
+            // Handle updated event
+            if (updatedImage.referenceImage.name == specificReferenceImageName)
             {
-                UpdateAnchor(trackedImage);
+                UpdateAnchor(updatedImage);
+                break;
             }
         }
     }
@@ -40,6 +44,7 @@ public class ImageAnchorController : MonoBehaviour
     private void CreateAnchor(ARTrackedImage trackedImage)
     {
         GameObject anchorObject = Instantiate(anchorPrefab, trackedImage.transform.position, trackedImage.transform.rotation);
+        anchorObject.transform.SetParent(trackedImage.transform);
 
         foreach (var element in inactiveElements)
         {

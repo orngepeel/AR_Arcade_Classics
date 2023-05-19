@@ -1010,8 +1010,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1739413096}
   - component: {fileID: 1739413095}
-  - component: {fileID: 1739413099}
   - component: {fileID: 1739413098}
+  - component: {fileID: 1739413099}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
