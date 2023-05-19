@@ -1029,12 +1029,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eeacfdf10311da41a58db0b650390bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackedImageManager: {fileID: 1739413098}
   anchorPrefab: {fileID: 7414126791596113512, guid: fe573e7abb8af466791f07600c0785e3,
     type: 3}
   inactiveElements:
   - {fileID: 32884612}
-  specificReferenceImageName: qrcode
+  specificReferenceImage: qrcode
 --- !u!4 &1627875678
 Transform:
   m_ObjectHideFlags: 0
