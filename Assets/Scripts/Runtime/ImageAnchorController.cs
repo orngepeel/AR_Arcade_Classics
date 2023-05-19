@@ -3,19 +3,14 @@ using UnityEngine.XR.ARFoundation;
 
 public class ImageAnchorController : MonoBehaviour
 {
-    [SerializeField] private ARTrackedImageManager trackedImageManager;
-    [SerializeField] private GameObject anchorPrefab;
-    [SerializeField] private GameObject[] inactiveElements;
-    [SerializeField] private string specificReferenceImageName;
+    [SerializeField] public GameObject anchorPrefab;
+    [SerializeField] public GameObject[] inactiveElements;
+    [SerializeField] public string specificReferenceImageName;
 
-    private void OnEnable()
+    private void Start()
     {
+        ARTrackedImageManager trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-    }
-
-    private void OnDisable()
-    {
-        trackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
