@@ -29,16 +29,6 @@ public class ImageAnchorController : MonoBehaviour
                 break;
             }
         }
-
-        foreach (var updatedImage in eventArgs.updated)
-        {
-            // Handle updated event
-            if (updatedImage.referenceImage.name == specificReferenceImageName)
-            {
-                UpdateAnchor(updatedImage);
-                break;
-            }
-        }
     }
 
     private void CreateAnchor(ARTrackedImage trackedImage)
@@ -49,20 +39,6 @@ public class ImageAnchorController : MonoBehaviour
         foreach (var element in inactiveElements)
         {
             element.SetActive(true);
-            element.transform.position = anchorObject.transform.position;
-            element.transform.rotation = anchorObject.transform.rotation;
-        }
-    }
-
-    private void UpdateAnchor(ARTrackedImage trackedImage)
-    {
-        // Update the anchor's position and rotation to match the tracked image
-        GameObject anchorObject = trackedImage.transform.GetChild(0).gameObject;
-        anchorObject.transform.position = trackedImage.transform.position;
-        anchorObject.transform.rotation = trackedImage.transform.rotation;
-
-        foreach (var element in inactiveElements)
-        {
             element.transform.position = anchorObject.transform.position;
             element.transform.rotation = anchorObject.transform.rotation;
         }
