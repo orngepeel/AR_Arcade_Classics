@@ -5,7 +5,6 @@ public class AnchorController : MonoBehaviour
 {
     [SerializeField] GameObject AnchorPrefab;
     [SerializeField] string ReferenceImageName;
-    [SerializeField] GameObject[] inactiveElements;
     [SerializeField] ARTrackedImageManager trackedImageManager;
     
     void OnEnable() => trackedImageManager.trackedImagesChanged += OnChanged;
@@ -18,16 +17,11 @@ public class AnchorController : MonoBehaviour
         {
             if(newImage.referenceImage.name == ReferenceImageName)
             {
-                transform.SetParent(newImage.transform);
+                // transform.SetParent(newImage.transform);
 
-                var anchorObject = Instantiate(AnchorPrefab, newImage.transform.position, newImage.transform.rotation, transform);
+                var anchorObject = Instantiate(AnchorPrefab, newImage.transform.position, newImage.transform.rotation);
+                anchorObject.transform.SetParent(newImage.transform);
 
-                foreach (var element in inactiveElements)
-                {
-                    element.SetActive(true);
-                    element.transform.position = anchorObject.transform.position;
-                    element.transform.rotation = anchorObject.transform.rotation;
-                }
             }
         }
     }
