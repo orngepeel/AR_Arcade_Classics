@@ -25,6 +25,7 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         public void StartButtonPressed()
         {
             if (Application.CanStreamedLevelBeLoaded(GameName))
+                
                 SceneManager.LoadScene(GameName, LoadSceneMode.Single);
         }
     }
