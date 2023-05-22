@@ -25,7 +25,7 @@ public class AnchorController : MonoBehaviour
             {
                 // transform.SetParent(newImage.transform);
 
-                var anchorObject = Instantiate(AnchorPrefab, newImage.transform);
+                Instantiate(AnchorPrefab, newImage.transform);
 
             }
         }

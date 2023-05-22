@@ -27,12 +27,6 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         static MenuInfo s_SelectedMenuInfo;
 
         [SerializeField]
-        Scrollbar m_HorizontalScrollBar;
-
-        [SerializeField]
-        Scrollbar m_VerticalScrollBar;
-
-        [SerializeField]
         TextMeshProUGUI m_TitleLabel;
 
         [SerializeField]
@@ -81,8 +75,6 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
             m_BackButton.SetActive(s_SelectedMenu.gameObject != gameObject);
 
             s_SelectedMenuInfo.gameObjectName = menu.name;
-
-            ScrollToStartPosition();
         }
 
         public void ResetTitleLabel()
@@ -100,12 +92,6 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         public void LoadScene(string sceneName)
         {
             SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-        }
-
-        void ScrollToStartPosition()
-        {
-            m_HorizontalScrollBar.value = 0;
-            m_VerticalScrollBar.value = 1;
         }
 
         class MenuInfo
