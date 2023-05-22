@@ -1,5 +1,4 @@
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 namespace UnityEngine.XR.ARFoundation.ARcadeClassics
 {
@@ -9,6 +8,9 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         GameObject m_StartButton;
         [SerializeField]
         private string GameName;
+        [SerializeField]
+        GameObject GameStartPrefab;
+        GameObject ActivatedGame;
 
         public GameObject backButton
         {
@@ -25,8 +27,11 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         public void StartButtonPressed()
         {
             if (Application.CanStreamedLevelBeLoaded(GameName))
+                ActivatedGame = GameObject.Find("/"+GameName);
+                ActivatedGame.SetActive(true);
+                ActivatedGame.transform.parent = GameStartPrefab.transform.parent;
+                GameStartPrefab.SetActive(false);
                 
-                SceneManager.LoadScene(GameName, LoadSceneMode.Single);
         }
     }
 }
