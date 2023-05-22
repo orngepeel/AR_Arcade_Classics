@@ -20,7 +20,7 @@ public class AnchorController : MonoBehaviour
 
     void OnChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        foreach (var newImage in eventArgs.updated)
+        foreach (var newImage in eventArgs.added)
         {
             if(newImage.referenceImage.name == "qrcode")
             {
