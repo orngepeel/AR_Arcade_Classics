@@ -5,6 +5,7 @@ public class AnchorController : MonoBehaviour
 {
     [SerializeField] GameObject AnchorPrefab;
     [SerializeField] ARTrackedImageManager trackedImageManager;
+    [SerializeField] GameObject inactiveObj;
     
     void OnEnable()
     {
@@ -25,7 +26,8 @@ public class AnchorController : MonoBehaviour
             {
                 // transform.SetParent(newImage.transform);
 
-                Instantiate(AnchorPrefab, newImage.transform);
+                inactiveObj.SetActive(true);
+                inactiveObj.transform.SetParent(newImage.transform);
 
             }
         }
