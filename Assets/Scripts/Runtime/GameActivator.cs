@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-public class AnchorController : MonoBehaviour
+public class GameActivator : MonoBehaviour
 {
     [SerializeField] GameObject AnchorPrefab;
     [SerializeField] ARTrackedImageManager trackedImageManager;
     [SerializeField] GameObject inactiveObj;
+    [SerializeField] GameObject inactiveUI;
     
     void OnEnable()
     {
@@ -28,6 +29,8 @@ public class AnchorController : MonoBehaviour
 
                 inactiveObj.SetActive(true);
                 inactiveObj.transform.SetParent(newImage.transform);
+
+                inactiveUI.SetActive(true);
 
             }
         }
