@@ -1,4 +1,5 @@
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 namespace UnityEngine.XR.ARFoundation.ARcadeClassics
 {
@@ -18,6 +19,7 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         // whatever else needs to happen when the game starts
         
         GameStartPrefab.gameObject.SetActive(false);
+        EventSystem.current.currentSelectedGameObject.SetActive(false);
 
         }
     }
