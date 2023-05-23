@@ -9,6 +9,8 @@ public class GameActivator : MonoBehaviour
     [SerializeField] GameObject inactiveUI;
     [SerializeField] GameObject inactiveStart;
 
+    GameObject objToDeactivate;
+
     void OnEnable()
     {
         trackedImageManager.trackedImagesChanged += OnChanged;
@@ -33,6 +35,7 @@ public class GameActivator : MonoBehaviour
 
                 inactiveUI.SetActive(true);
                 inactiveStart.SetActive(true);
+                objToDeactivate = inactiveStart;
 
             }
         }
@@ -40,6 +43,6 @@ public class GameActivator : MonoBehaviour
 
     public void DeactivateGameStartPrefab()
     {
-        inactiveStart.SetActive(false);
+        objToDeactivate.SetActive(false);
     }
 }

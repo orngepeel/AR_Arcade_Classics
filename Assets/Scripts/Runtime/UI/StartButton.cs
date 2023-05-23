@@ -9,6 +9,7 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         [SerializeField] GameObject snakeHeadPrefab;
         [SerializeField] GameObject gameBoard;
         [SerializeField] GameObject GameStartPrefab;
+        [SerializeField] GameActivator gameActivator;
 
         public void StartButtonPressed()
         {
@@ -18,6 +19,7 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         GameObject SnakeHead = Instantiate(snakeHeadPrefab, localPosition, localRotation, gameBoard.transform);
         // whatever else needs to happen when the game starts
 
+        gameActivator.DeactivateGameStartPrefab();
         }
     }
 }
