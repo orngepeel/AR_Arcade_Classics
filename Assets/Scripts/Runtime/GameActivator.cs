@@ -7,7 +7,8 @@ public class GameActivator : MonoBehaviour
     [SerializeField] ARTrackedImageManager trackedImageManager;
     [SerializeField] GameObject inactiveObj;
     [SerializeField] GameObject inactiveUI;
-    
+    [SerializeField] GameObject inactiveStart;
+
     void OnEnable()
     {
         trackedImageManager.trackedImagesChanged += OnChanged;
@@ -31,6 +32,7 @@ public class GameActivator : MonoBehaviour
                 inactiveObj.transform.SetParent(newImage.transform);
 
                 inactiveUI.SetActive(true);
+                inactiveStart.SetActive(true);
 
             }
         }
