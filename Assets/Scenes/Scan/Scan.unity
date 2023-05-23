@@ -644,7 +644,7 @@ MonoBehaviour:
   trackedImageManager: {fileID: 388525032}
   inactiveObj: {fileID: 21982069}
   inactiveUI: {fileID: 1794541757}
-  inactiveStart: {fileID: 0}
+  inactiveStart: {fileID: 478628194}
 --- !u!1001 &478628192
 PrefabInstance:
   m_ObjectHideFlags: 0
