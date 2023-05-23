@@ -953,6 +953,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6419763397052704816, guid: b8f4999634df89b46b48cd3f4a6e2c25,
         type: 3}
+      propertyPath: gameActivator
+      value: 
+      objectReference: {fileID: 388525034}
+    - target: {fileID: 6419763397052704816, guid: b8f4999634df89b46b48cd3f4a6e2c25,
+        type: 3}
       propertyPath: snakeHeadPrefab
       value: 
       objectReference: {fileID: 8546072172971409777, guid: dd8766b50658df04ca7fb8e20f7d6705,

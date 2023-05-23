@@ -37,4 +37,9 @@ public class GameActivator : MonoBehaviour
             }
         }
     }
+
+    public void DeactivateGameStartPrefab()
+    {
+        inactiveStart.SetActive(false);
+    }
 }
