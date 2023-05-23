@@ -5,9 +5,11 @@ public class GameActivator : MonoBehaviour
 {
     [SerializeField] GameObject GameContainer;
     [SerializeField] ARTrackedImageManager trackedImageManager;
+    [SerializeField] ARSession arSession;
 
     void OnEnable()
     {
+        arSession.Reset();
         trackedImageManager.trackedImagesChanged += OnChanged;
     } 
         
