@@ -3,13 +3,8 @@ using UnityEngine.XR.ARFoundation;
 
 public class GameActivator : MonoBehaviour
 {
-    [SerializeField] GameObject AnchorPrefab;
+    [SerializeField] GameObject GameContainer;
     [SerializeField] ARTrackedImageManager trackedImageManager;
-    [SerializeField] GameObject inactiveObj;
-    [SerializeField] GameObject inactiveUI;
-    [SerializeField] GameObject inactiveStart;
-
-    GameObject objToDeactivate;
 
     void OnEnable()
     {
@@ -26,23 +21,8 @@ public class GameActivator : MonoBehaviour
     {
         foreach (var newImage in eventArgs.added)
         {
-            if(newImage.referenceImage.name == "qrcode")
-            {
-                // transform.SetParent(newImage.transform);
-
-                inactiveObj.SetActive(true);
-                inactiveObj.transform.SetParent(newImage.transform);
-
-                inactiveUI.SetActive(true);
-                inactiveStart.SetActive(true);
-                objToDeactivate = inactiveStart;
-
-            }
+            GameContainer.SetActive(true);
+            GameContainer.transform.SetParent(newImage.transform);
         }
-    }
-
-    public void DeactivateGameStartPrefab()
-    {
-        objToDeactivate.SetActive(false);
     }
 }

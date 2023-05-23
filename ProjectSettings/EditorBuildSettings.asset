@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scan/Scan.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Snake/Snake.unity
-    guid: d1126297d72911a42885e4e65dd33448
+    guid: bcf5b2fd4d61a634ab0a78dae798d6a9
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 89a6d18d3df8d3e4fa917b0f9a963bc0,
       type: 2}
