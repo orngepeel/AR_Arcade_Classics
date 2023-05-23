@@ -200,9 +200,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa04a8248f6eeab479a3d078ccc925cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snakeHeadPrefab: {fileID: 0}
-  gameBoard: {fileID: 0}
-  GameStartPrefab: {fileID: 0}
+  snakeHeadPrefab: {fileID: 8546072172971409777, guid: dd8766b50658df04ca7fb8e20f7d6705,
+    type: 3}
+  gameBoard: {fileID: 8495510910839495706, guid: 1fbd795b61cd44487954fb10d83ddb7a,
+    type: 3}
+  GameStartPrefab: {fileID: 873571257370076533}
 --- !u!1 &4651640689872289892
 GameObject:
   m_ObjectHideFlags: 0
