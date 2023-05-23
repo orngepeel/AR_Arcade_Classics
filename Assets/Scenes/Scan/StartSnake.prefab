@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StartButton: {fileID: 3848135053367801164}
   GameName: Snake
-  GameStartPrefab: {fileID: 873571257370076533}
+  GameStartPrefab: {fileID: 8546072172971409777, guid: dd8766b50658df04ca7fb8e20f7d6705,
+    type: 3}
 --- !u!1 &3848135053367801164
 GameObject:
   m_ObjectHideFlags: 0
