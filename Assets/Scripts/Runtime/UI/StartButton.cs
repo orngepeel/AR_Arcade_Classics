@@ -17,9 +17,6 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         Quaternion localRotation = Quaternion.identity; // some logic for getting local rotation relative to the board
         GameObject SnakeHead = Instantiate(snakeHeadPrefab, localPosition, localRotation, gameBoard.transform);
         // whatever else needs to happen when the game starts
-        
-        GameStartPrefab.gameObject.SetActive(false);
-        EventSystem.current.currentSelectedGameObject.SetActive(false);
 
         }
     }
