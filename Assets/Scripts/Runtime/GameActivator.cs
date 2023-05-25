@@ -4,8 +4,8 @@ using UnityEngine.XR.ARFoundation;
 public class GameActivator : MonoBehaviour
 {
     [SerializeField] GameObject GameContainer;
-    private string anchorPositionKey = "SavedAnchorPosition";
-    private string anchorRotationKey = "SavedAnchorRotation";
+    private string anchorPositionKey = "AnchorKeyPosition";
+    private string anchorRotationKey = "AnchorKeyRotation";
     
     void Start()
     {
