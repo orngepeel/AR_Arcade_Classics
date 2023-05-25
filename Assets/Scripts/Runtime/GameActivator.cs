@@ -4,36 +4,43 @@ using UnityEngine.XR.ARFoundation;
 public class GameActivator : MonoBehaviour
 {
     [SerializeField] GameObject GameContainer;
-    [SerializeField] ARTrackedImageManager trackedImageManager;
-    [SerializeField] ARSession arSession;
-
-    void OnEnable()
+    private string anchorPositionKey = "SavedAnchorPosition";
+    private string anchorRotationKey = "SavedAnchorRotation";
+    
+    void Start()
     {
-        arSession.Reset();
-        trackedImageManager.trackedImagesChanged += OnChanged;
-    } 
-        
-
-    void OnDisable()
-    {
-        trackedImageManager.trackedImagesChanged -= OnChanged;
+        ActivateGame();
     }
 
-    void OnChanged(ARTrackedImagesChangedEventArgs eventArgs)
+    void ActivateGame()
     {
-        foreach (var newImage in eventArgs.added)
+        if (PlayerPrefs.HasKey(anchorPositionKey) && PlayerPrefs.HasKey(anchorRotationKey))
         {
-            GameContainer.SetActive(true);
-            GameContainer.transform.SetParent(newImage.transform);
-        }
+            Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
+            Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
 
-        foreach (var updatedImage in eventArgs.updated)
-        {
-            if(!GameContainer.activeSelf)
-            {
-                GameContainer.SetActive(true);
-                GameContainer.transform.SetParent(updatedImage.transform);
-            }
+            GameContainer.SetActive(true);
+            GameContainer.transform.position = savedPosition;
+            GameContainer.transform.rotation = savedRotation;
         }
+    }
+
+    private Vector3 StringToVector3(string serializedVector)
+    {
+        string[] values = serializedVector.Split(',');
+        float x = float.Parse(values[0]);
+        float y = float.Parse(values[1]);
+        float z = float.Parse(values[2]);
+        return new Vector3(x, y, z);
+    }
+
+    private Quaternion StringToQuaternion(string serializedQuaternion)
+    {
+        string[] values = serializedQuaternion.Split(',');
+        float x = float.Parse(values[0]);
+        float y = float.Parse(values[1]);
+        float z = float.Parse(values[2]);
+        float w = float.Parse(values[3]);
+        return new Quaternion(x, y, z, w);
     }
 }
