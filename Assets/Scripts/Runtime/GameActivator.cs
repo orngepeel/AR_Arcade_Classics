@@ -26,5 +26,14 @@ public class GameActivator : MonoBehaviour
             GameContainer.SetActive(true);
             GameContainer.transform.SetParent(newImage.transform);
         }
+
+        foreach (var updatedImage in eventArgs.updated)
+        {
+            if(!GameContainer.activeSelf)
+            {
+                GameContainer.SetActive(true);
+                GameContainer.transform.SetParent(updatedImage.transform);
+            }
+        }
     }
 }
