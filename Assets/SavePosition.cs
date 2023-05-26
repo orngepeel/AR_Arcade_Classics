@@ -20,7 +20,7 @@ public class SavePosition : MonoBehaviour
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        foreach (var trackedImage in eventArgs.added)
+        foreach (var trackedImage in eventArgs.updated)
         {
             SaveAnchor(trackedImage);
         }
