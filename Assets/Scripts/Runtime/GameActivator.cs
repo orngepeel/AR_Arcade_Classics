@@ -7,7 +7,7 @@ public class GameActivator : MonoBehaviour
     private string anchorPositionKey = "AnchorKeyPosition";
     private string anchorRotationKey = "AnchorKeyRotation";
     
-    void Start()
+    void Awake()
     {
         ActivateGame();
     }
