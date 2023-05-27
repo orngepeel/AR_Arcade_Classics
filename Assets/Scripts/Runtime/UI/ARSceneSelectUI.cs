@@ -27,15 +27,6 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
         static MenuInfo s_SelectedMenuInfo;
 
         [SerializeField]
-        Scrollbar m_HorizontalScrollBar;
-
-        [SerializeField]
-        Scrollbar m_VerticalScrollBar;
-
-        [SerializeField]
-        TextMeshProUGUI m_TitleLabel;
-
-        [SerializeField]
         GameObject m_BackButton;
 
         void Awake()
@@ -50,8 +41,6 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
                 // If we have a selected menu on awake, this means the scene was unloaded and reloaded.
                 // In this case our selected menu GameObject will be null, but we can find it again by name.
                 s_SelectedMenu = transform.parent.Find(s_SelectedMenuInfo.gameObjectName).gameObject;
-                if (s_SelectedMenuInfo.menuName != null)
-                    SetTitleLabelMenuName(s_SelectedMenuInfo.menuName);
 
                 // Hide the main menu in this case
                 gameObject.SetActive(false);
@@ -81,31 +70,11 @@ namespace UnityEngine.XR.ARFoundation.ARcadeClassics
             m_BackButton.SetActive(s_SelectedMenu.gameObject != gameObject);
 
             s_SelectedMenuInfo.gameObjectName = menu.name;
-
-            ScrollToStartPosition();
-        }
-
-        public void ResetTitleLabel()
-        {
-            m_TitleLabel.text = k_DefaultTitleLabel;
-            s_SelectedMenuInfo.menuName = null;
-        }
-
-        public void SetTitleLabelMenuName(string menuName)
-        {
-            m_TitleLabel.text = $"Samples / {menuName}";
-            s_SelectedMenuInfo.menuName = menuName;
         }
 
         public void LoadScene(string sceneName)
         {
             SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-        }
-
-        void ScrollToStartPosition()
-        {
-            m_HorizontalScrollBar.value = 0;
-            m_VerticalScrollBar.value = 1;
         }
 
         class MenuInfo

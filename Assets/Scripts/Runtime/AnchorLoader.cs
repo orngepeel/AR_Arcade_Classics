@@ -3,6 +3,7 @@ using UnityEngine;
 public class AnchorLoader : MonoBehaviour
 {
     public GameObject anchorPrefab;
+    public GameObject gameContainer;
 
     private string anchorPositionKey = "SavedAnchorPosition";
     private string anchorRotationKey = "SavedAnchorRotation";
@@ -18,8 +19,12 @@ public class AnchorLoader : MonoBehaviour
         {
             Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
             Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
+            
+            transform.position = savedPosition;
+            transform.rotation = savedRotation;
 
-            Instantiate(anchorPrefab, savedPosition, savedRotation);
+            Instantiate(anchorPrefab, savedPosition, savedRotation, transform);
+            gameContainer.transform.SetParent(anchorPrefab.transform);
         }
     }
 
