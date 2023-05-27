@@ -6,22 +6,31 @@ public class GameActivator : MonoBehaviour
     [SerializeField] GameObject GameContainer;
     private string anchorPositionKey = "AnchorKeyPosition";
     private string anchorRotationKey = "AnchorKeyRotation";
+    Vector3 savedPosition;
+    Quaternion savedRotation;
     
-    void Awake()
+    void Start()
     {
         ActivateGame();
+    }
+
+    void Update()
+    {
+        if(!(transform.position == savedPosition) || !(transform.rotation == savedRotation))
+        {
+            ActivateGame();
+        }
     }
 
     void ActivateGame()
     {
         if (PlayerPrefs.HasKey(anchorPositionKey) && PlayerPrefs.HasKey(anchorRotationKey))
         {
-            Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
-            Quaternion savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
+            savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
+            savedRotation = StringToQuaternion(PlayerPrefs.GetString(anchorRotationKey));
 
-            GameContainer.SetActive(true);
-            GameContainer.transform.position = savedPosition;
-            GameContainer.transform.rotation = savedRotation;
+            transform.position = savedPosition;
+            transform.rotation = savedRotation;
         }
     }
 
