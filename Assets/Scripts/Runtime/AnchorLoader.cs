@@ -26,7 +26,7 @@ public class AnchorLoader : MonoBehaviour
             Instantiate(anchorPrefab, transform);
             anchorPrefab.transform.localPosition = new Vector3(0,0,0);
             anchorPrefab.transform.localRotation = Quaternion.identity;
-            gameContainer.transform.SetParent(anchorPrefab.transform);
+            gameContainer.transform.SetParent(anchorPrefab.transform, false);
             gameContainer.transform.localPosition = new Vector3(0,0,0);
             gameContainer.transform.localRotation = Quaternion.identity;
         }
