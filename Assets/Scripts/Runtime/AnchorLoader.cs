@@ -10,10 +10,10 @@ public class AnchorLoader : MonoBehaviour
 
     private void Start()
     {
-        LoadAnchor();
+        LoadGame();
     }
 
-    private void LoadAnchor()
+    private void LoadGame()
     {
         if (PlayerPrefs.HasKey(anchorPositionKey) && PlayerPrefs.HasKey(anchorRotationKey))
         {
@@ -23,8 +23,12 @@ public class AnchorLoader : MonoBehaviour
             transform.position = savedPosition;
             transform.rotation = savedRotation;
 
-            Instantiate(anchorPrefab, savedPosition, savedRotation, transform);
+            Instantiate(anchorPrefab, transform);
+            anchorPrefab.transform.localPosition = new Vector3(0,0,0);
+            anchorPrefab.transform.localRotation = Quaternion.identity;
             gameContainer.transform.SetParent(anchorPrefab.transform);
+            gameContainer.transform.localPosition = new Vector3(0,0,0);
+            gameContainer.transform.localRotation = Quaternion.identity;
         }
     }
 
