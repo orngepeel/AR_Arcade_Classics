@@ -510,9 +510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9112d37060e8a4dbd3fb86b5b30e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPrefab: {fileID: 3794428938698279366, guid: e5ba6ebeeca1bd749a9dab30afd7b5ff,
-    type: 3}
-  gameContainer: {fileID: 1511591296}
 --- !u!4 &1061238146
 Transform:
   m_ObjectHideFlags: 0
@@ -834,7 +831,7 @@ GameObject:
   - component: {fileID: 1511591297}
   m_Layer: 0
   m_Name: GameContainer
-  m_TagString: Untagged
+  m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

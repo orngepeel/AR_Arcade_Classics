@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class AnchorLoader : MonoBehaviour
 {
-    public GameObject anchorPrefab;
-    public GameObject gameContainer;
+    GameObject[] gameContainer;
 
     private string anchorPositionKey = "SavedAnchorPosition";
     private string anchorRotationKey = "SavedAnchorRotation";
@@ -11,6 +10,7 @@ public class AnchorLoader : MonoBehaviour
 
     private void Start()
     {
+        gameContainer = GameObject.FindGameObjectsWithTag("Container");
         LoadGame();
     }
 
@@ -32,13 +32,8 @@ public class AnchorLoader : MonoBehaviour
             transform.position = savedPosition;
             transform.rotation = savedRotation;
 
-            Instantiate(anchorPrefab, savedPosition, savedRotation);
-            anchorPrefab.transform.SetParent(transform, false);
-            anchorPrefab.transform.localPosition = new Vector3(0,0,0);
-            anchorPrefab.transform.localRotation = Quaternion.identity;
-            gameContainer.transform.SetParent(anchorPrefab.transform, false);
-            gameContainer.transform.localPosition = new Vector3(0,0,0);
-            gameContainer.transform.localRotation = Quaternion.identity;
+            gameContainer[0].transform.localPosition = new Vector3(0,0,0);
+            gameContainer[0].transform.localRotation = Quaternion.identity;
 
             hasLoaded = true;
         }
