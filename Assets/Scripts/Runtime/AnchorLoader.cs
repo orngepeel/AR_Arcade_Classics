@@ -7,10 +7,19 @@ public class AnchorLoader : MonoBehaviour
 
     private string anchorPositionKey = "SavedAnchorPosition";
     private string anchorRotationKey = "SavedAnchorRotation";
+    private bool hasLoaded = false;
 
     private void Start()
     {
         LoadGame();
+    }
+
+    private void Update()
+    {
+        if(!hasLoaded)
+        {
+            LoadGame();
+        }
     }
 
     private void LoadGame()
@@ -23,12 +32,15 @@ public class AnchorLoader : MonoBehaviour
             transform.position = savedPosition;
             transform.rotation = savedRotation;
 
-            Instantiate(anchorPrefab, transform);
+            Instantiate(anchorPrefab, savedPosition, savedRotation);
+            anchorPrefab.transform.SetParent(transform, false);
             anchorPrefab.transform.localPosition = new Vector3(0,0,0);
             anchorPrefab.transform.localRotation = Quaternion.identity;
             gameContainer.transform.SetParent(anchorPrefab.transform, false);
             gameContainer.transform.localPosition = new Vector3(0,0,0);
             gameContainer.transform.localRotation = Quaternion.identity;
+
+            hasLoaded = true;
         }
     }
 
