@@ -17,8 +17,22 @@ public class SnakeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // up
         transform.position = transform.position + (transform.forward * snakeSpeed * Time.deltaTime);
 
+        // these if statements should connect to the buttons -- have not figured out how to do that
+
+        // if up
+        // transform.position = transform.position + (transform.forward * snakeSpeed * Time.deltaTime);
+
+        // if down
+        // transform.position = transform.position + (-transform.forward * snakeSpeed * Time.deltaTime);
+
+        // if right
+        // transform.position = transform.position + (transform.right * snakeSpeed * Time.deltaTime);
+
+        // if left
+        // transform.position = transform.position + (-transform.right * snakeSpeed * Time.deltaTime);
 
     }
 
