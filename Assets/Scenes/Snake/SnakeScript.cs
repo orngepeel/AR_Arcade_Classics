@@ -1,12 +1,16 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class SnakeScript : MonoBehaviour
 {
     public float steerSpeed = 180;
     public float snakeSpeed = 1;
     public Vector3 startPosition;
+    public GameObject leftButton;
+    public GameObject rightButton;
+    public GameObject upButton;
+    public GameObject downButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,21 +22,7 @@ public class SnakeScript : MonoBehaviour
     void Update()
     {
         // up
-        transform.position = transform.position + (transform.forward * snakeSpeed * Time.deltaTime);
-
-        // these if statements should connect to the buttons -- have not figured out how to do that
-
-        // if up
-        // transform.position = transform.position + (transform.forward * snakeSpeed * Time.deltaTime);
-
-        // if down
-        // transform.position = transform.position + (-transform.forward * snakeSpeed * Time.deltaTime);
-
-        // if right
-        // transform.position = transform.position + (transform.right * snakeSpeed * Time.deltaTime);
-
-        // if left
-        // transform.position = transform.position + (-transform.right * snakeSpeed * Time.deltaTime);
+        //transform.position = transform.position + (transform.forward * snakeSpeed * Time.deltaTime);
 
     }
 
@@ -53,6 +43,33 @@ public class SnakeScript : MonoBehaviour
             Grow();
         } else if (other.gameObject.CompareTag("Obstacle")) {
             ResetState();
+        }
+    }
+
+    public void changeDirection(string direction)
+    {
+        // if up
+        if(direction == "up")
+        {
+            transform.position = transform.position + (transform.forward * snakeSpeed * Time.deltaTime);
+        }
+
+        // if down
+        if(direction == "down")
+        {
+            transform.position = transform.position + (-transform.forward * snakeSpeed * Time.deltaTime);
+        }
+
+        // if right
+        if(direction == "right")
+        {
+            transform.position = transform.position + (transform.right * snakeSpeed * Time.deltaTime);
+        }
+
+        // if left
+        if(direction == "left")
+        {
+            transform.position = transform.position + (-transform.right * snakeSpeed * Time.deltaTime);
         }
     }
 }
