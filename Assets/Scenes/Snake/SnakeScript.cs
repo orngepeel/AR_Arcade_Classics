@@ -11,18 +11,20 @@ public class SnakeScript : MonoBehaviour
     public GameObject rightButton;
     public GameObject upButton;
     public GameObject downButton;
+
+    private string currentDirection;
+
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
-        
+        setDirection("up");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // up
-        //transform.position = transform.position + (transform.forward * snakeSpeed * Time.deltaTime);
+        changeDirection(currentDirection);
 
     }
 
@@ -46,7 +48,14 @@ public class SnakeScript : MonoBehaviour
         }
     }
 
-    public void changeDirection(string direction)
+    public void setDirection(string direction)
+    {
+        currentDirection = direction;
+
+        // add logic for rotating snake head prefab here
+    }
+
+    private void changeDirection(string direction)
     {
         // if up
         if(direction == "up")
