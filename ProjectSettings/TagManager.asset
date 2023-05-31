@@ -8,6 +8,7 @@ TagManager:
   - Container
   - Obstacle
   - Food
+  - Snake
   layers:
   - Default
   - TransparentFX

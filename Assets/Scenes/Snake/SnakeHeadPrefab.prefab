@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 716511430590873620}
   m_Layer: 0
   m_Name: SnakeHeadPrefab
-  m_TagString: Untagged
+  m_TagString: Snake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -437,7 +437,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd195ccd986345b08de7faed0e2ec5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  steerSpeed: 180
   snakeSpeed: 5
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &716511430590873620
 Rigidbody:
   m_ObjectHideFlags: 0
