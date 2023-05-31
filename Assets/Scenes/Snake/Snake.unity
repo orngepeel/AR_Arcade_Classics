@@ -287,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 257583759}
   - component: {fileID: 257583758}
-  - component: {fileID: 257583757}
+  - component: {fileID: 257583760}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -295,26 +295,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &257583757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257583756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &257583758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +325,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &257583760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257583756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_PointAction: {fileID: 8160123882258622029, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_MoveAction: {fileID: 8671909720069792269, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_SubmitAction: {fileID: 2982574237445981210, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_CancelAction: {fileID: -2968765500786062241, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_LeftClickAction: {fileID: 8622027894784507219, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_MiddleClickAction: {fileID: 8872306921243393960, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_RightClickAction: {fileID: 5799751478193182776, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 3495270036076521333, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: -545531299088249394, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 6611224274564197028, guid: 9efdfbc03e7594a35a8fc51ed620a2c2,
+    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &489535439 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8546072172971409777, guid: dd8766b50658df04ca7fb8e20f7d6705,
@@ -606,7 +627,7 @@ PrefabInstance:
     - target: {fileID: 3929852704615762350, guid: 075182eb14c510c4182aebcf99d81bf7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: changeDirection
+      value: setDirection
       objectReference: {fileID: 0}
     - target: {fileID: 3929852704615762350, guid: 075182eb14c510c4182aebcf99d81bf7,
         type: 3}
@@ -646,7 +667,7 @@ PrefabInstance:
     - target: {fileID: 4415073535990937282, guid: 075182eb14c510c4182aebcf99d81bf7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: changeDirection
+      value: setDirection
       objectReference: {fileID: 0}
     - target: {fileID: 4415073535990937282, guid: 075182eb14c510c4182aebcf99d81bf7,
         type: 3}
@@ -811,7 +832,7 @@ PrefabInstance:
     - target: {fileID: 7413838158411004444, guid: 075182eb14c510c4182aebcf99d81bf7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: changeDirection
+      value: setDirection
       objectReference: {fileID: 0}
     - target: {fileID: 7413838158411004444, guid: 075182eb14c510c4182aebcf99d81bf7,
         type: 3}
@@ -851,7 +872,7 @@ PrefabInstance:
     - target: {fileID: 7473640993301500471, guid: 075182eb14c510c4182aebcf99d81bf7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: changeDirection
+      value: setDirection
       objectReference: {fileID: 0}
     - target: {fileID: 7473640993301500471, guid: 075182eb14c510c4182aebcf99d81bf7,
         type: 3}
