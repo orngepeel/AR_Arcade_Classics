@@ -7,18 +7,13 @@ public class SnakeScript : MonoBehaviour
     public float steerSpeed = 180;
     public float snakeSpeed = 1;
     public Vector3 startPosition;
-    public GameObject leftButton;
-    public GameObject rightButton;
-    public GameObject upButton;
-    public GameObject downButton;
 
-    private string currentDirection;
+    string currentDirection;
 
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
-        setDirection("up");
     }
 
     // Update is called once per frame
@@ -52,7 +47,8 @@ public class SnakeScript : MonoBehaviour
     {
         currentDirection = direction;
 
-        // add logic for rotating snake head prefab here
+        // add logic for rotating snake head prefab here, since it will only get called on button press
+
     }
 
     private void changeDirection(string direction)
@@ -60,25 +56,25 @@ public class SnakeScript : MonoBehaviour
         // if up
         if(direction == "up")
         {
-            transform.position = transform.position + (transform.forward * snakeSpeed * Time.deltaTime);
+            transform.Translate(Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if down
-        if(direction == "down")
+        else if(direction == "down")
         {
-            transform.position = transform.position + (-transform.forward * snakeSpeed * Time.deltaTime);
+            transform.Translate(-Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if right
-        if(direction == "right")
+        else if(direction == "right")
         {
-            transform.position = transform.position + (transform.right * snakeSpeed * Time.deltaTime);
+            transform.Translate(Vector3.right * snakeSpeed * Time.deltaTime);
         }
 
         // if left
-        if(direction == "left")
+        else if(direction == "left")
         {
-            transform.position = transform.position + (-transform.right * snakeSpeed * Time.deltaTime);
+            transform.Translate(-Vector3.right * snakeSpeed * Time.deltaTime);
         }
     }
 }
