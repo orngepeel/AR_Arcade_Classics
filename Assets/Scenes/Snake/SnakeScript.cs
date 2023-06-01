@@ -82,28 +82,28 @@ public class SnakeScript : MonoBehaviour
         // if up
         if(direction == "up")
         {
-            transform.localRotation = upRotate;
+            transform.localRotation = Quaternion.Euler(upRotate);
             transform.Translate(Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if down
         else if(direction == "down")
         {
-            transform.localRotation = downRotate;
+            transform.localRotation = Quaternion.Euler(downRotate);
             transform.Translate(-Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if right
         else if(direction == "right")
         {
-            transform.localRotation = rightRotate;
+            transform.localRotation = Quaternion.Euler(rightRotate);
             transform.Translate(Vector3.right * snakeSpeed * Time.deltaTime);
         }
 
         // if left
         else if(direction == "left")
         {
-            transform.localRotation = leftRotate;
+            transform.localRotation = Quaternion.Euler(leftRotate);
             transform.Translate(-Vector3.right * snakeSpeed * Time.deltaTime);
         }
     }
