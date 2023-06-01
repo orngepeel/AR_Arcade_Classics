@@ -9,6 +9,7 @@ public class SnakeScript : MonoBehaviour
     public Vector3 startPosition;
     public List<Transform> _segments;
     public Transform segmentPrefab;
+    public int initialSize = 4;
 
     public GameObject leftWall;
     public GameObject rightWall;
@@ -53,6 +54,17 @@ public class SnakeScript : MonoBehaviour
     void ResetState()
     {
         transform.position = startPosition;
+
+        for (int i = 1; i < _segments.Count; i++) {
+            Destroy(_segments[i].gameObject);
+        }
+
+        _segments.Clear();
+        _segments.Add(transform);
+
+        for (int i = 0; i < initialSize - 1; i++) {
+            Grow();
+    }
 
     }
 
