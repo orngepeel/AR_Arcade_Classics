@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -396,6 +396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2718579458061267171, guid: 1fbd795b61cd44487954fb10d83ddb7a,
         type: 3}
+      propertyPath: m_Name
+      value: left
+      objectReference: {fileID: 0}
+    - target: {fileID: 2718579458061267171, guid: 1fbd795b61cd44487954fb10d83ddb7a,
+        type: 3}
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
@@ -424,6 +429,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 4583205511914010152, guid: 1fbd795b61cd44487954fb10d83ddb7a,
+        type: 3}
+      propertyPath: m_Name
+      value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855562971370445399, guid: 1fbd795b61cd44487954fb10d83ddb7a,
+        type: 3}
+      propertyPath: m_Name
+      value: right
+      objectReference: {fileID: 0}
     - target: {fileID: 4855562971370445399, guid: 1fbd795b61cd44487954fb10d83ddb7a,
         type: 3}
       propertyPath: m_TagString
@@ -436,6 +451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916358823798380851, guid: 1fbd795b61cd44487954fb10d83ddb7a,
         type: 3}
+      propertyPath: m_Name
+      value: up
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916358823798380851, guid: 1fbd795b61cd44487954fb10d83ddb7a,
+        type: 3}
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
@@ -443,6 +463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073372046089881296, guid: 1fbd795b61cd44487954fb10d83ddb7a,
+        type: 3}
+      propertyPath: m_Name
+      value: down
       objectReference: {fileID: 0}
     - target: {fileID: 7073372046089881296, guid: 1fbd795b61cd44487954fb10d83ddb7a,
         type: 3}

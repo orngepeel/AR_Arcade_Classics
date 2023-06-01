@@ -10,6 +10,11 @@ public class SnakeScript : MonoBehaviour
     public List<Transform> _segments;
     public Transform segmentPrefab;
 
+    public GameObject leftWall;
+    public GameObject rightWall;
+    public GameObject upWall;
+    public GameObject downWall;
+
     // these DO rotate the snake head, but they don't do it level to the plane of the board? I tried all three axes
     public Vector3 upRotate = new Vector3(0, 0, 0);
     public Vector3 downRotate = new Vector3(0, 0, 180);
@@ -65,6 +70,28 @@ public class SnakeScript : MonoBehaviour
         currentDirection = direction;
 
         // add logic for rotating snake head prefab here, since it will only get called on button press
+        if(direction == "up")
+        {
+            transform.LookAt(upWall.transform);
+        }
+
+        // if down
+        else if(direction == "down")
+        {
+            transform.LookAt(downWall.transform);
+        }
+
+        // if right
+        else if(direction == "right")
+        {
+            transform.LookAt(rightWall.transform);
+        }
+
+        // if left
+        else if(direction == "left")
+        {
+            transform.LookAt(leftWall.transform);
+        }
 
     }
 
