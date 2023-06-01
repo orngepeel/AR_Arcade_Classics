@@ -9,7 +9,7 @@ public class SnakeScript : MonoBehaviour
     public Vector3 startPosition;
     public List<Transform> _segments;
     public Transform segmentPrefab;
-    public int initialSize = 4;
+    public int initialSize = 1;
 
     // these DO rotate the snake head, but they don't do it level to the plane of the board? I tried all three axes
     public Vector3 upRotate = new Vector3(0, 0, 0);
@@ -82,28 +82,28 @@ public class SnakeScript : MonoBehaviour
         // if up
         if(direction == "up")
         {
-            transform.localEulerAngles = upRotate;
+            //transform.localEulerAngles = upRotate;
             transform.Translate(Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if down
         else if(direction == "down")
         {
-            transform.localEulerAngles = downRotate;
+            //transform.localEulerAngles = downRotate;
             transform.Translate(-Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if right
         else if(direction == "right")
         {
-            transform.localEulerAngles = rightRotate;
+            //transform.localEulerAngles = rightRotate;
             transform.Translate(Vector3.right * snakeSpeed * Time.deltaTime);
         }
 
         // if left
         else if(direction == "left")
         {
-            transform.localEulerAngles = leftRotate;
+            //transform.localEulerAngles = leftRotate;
             transform.Translate(-Vector3.right * snakeSpeed * Time.deltaTime);
         }
     }
