@@ -11,11 +11,6 @@ public class SnakeScript : MonoBehaviour
     public Transform segmentPrefab;
     public int initialSize = 4;
 
-    public GameObject leftWall;
-    public GameObject rightWall;
-    public GameObject upWall;
-    public GameObject downWall;
-
     // these DO rotate the snake head, but they don't do it level to the plane of the board? I tried all three axes
     public Vector3 upRotate = new Vector3(0, 0, 0);
     public Vector3 downRotate = new Vector3(0, 0, 180);
@@ -81,28 +76,28 @@ public class SnakeScript : MonoBehaviour
     {
         currentDirection = direction;
 
-        // add logic for rotating snake head prefab here, since it will only get called on button press
+        // logic for rotating snake head prefab here, since it will only get called on button press
         if(direction == "up")
         {
-            transform.LookAt(upWall.transform);
+            transform.localEulerAngles = upRotate;
         }
 
         // if down
         else if(direction == "down")
         {
-            transform.LookAt(downWall.transform);
+            transform.localEulerAngles = downRotate;
         }
 
         // if right
         else if(direction == "right")
         {
-            transform.LookAt(rightWall.transform);
+            transform.localEulerAngles = rightRotate;
         }
 
         // if left
         else if(direction == "left")
         {
-            transform.LookAt(leftWall.transform);
+            transform.localEulerAngles = leftRotate;
         }
 
     }
@@ -112,28 +107,24 @@ public class SnakeScript : MonoBehaviour
         // if up
         if(direction == "up")
         {
-            //transform.eulerAngles = upRotate;
             transform.Translate(Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if down
         else if(direction == "down")
         {
-            //transform.eulerAngles = downRotate;
             transform.Translate(-Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if right
         else if(direction == "right")
         {
-            //transform.eulerAngles = rightRotate;
             transform.Translate(Vector3.right * snakeSpeed * Time.deltaTime);
         }
 
         // if left
         else if(direction == "left")
         {
-            //transform.eulerAngles = leftRotate;
             transform.Translate(-Vector3.right * snakeSpeed * Time.deltaTime);
         }
     }
