@@ -7,6 +7,8 @@ public class SnakeScript : MonoBehaviour
     public float steerSpeed = 180;
     public float snakeSpeed = 1;
     public Vector3 startPosition;
+    public List<Transform> _segments;
+    public Transform segmentPrefab;
 
     // these DO rotate the snake head, but they don't do it level to the plane of the board? I tried all three axes
     public Vector3 upRotate = new Vector3(0, 0, 0);
@@ -19,19 +21,28 @@ public class SnakeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _segments = new List<Transform>();
+        _segments.Add(this.transform);
         startPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         changeDirection(currentDirection);
+
+        for (int i = _segments.Count - 1; i > 0; i--) {
+            _segments[i].position = _segments[i - 1].position;
+        }
 
     }
 
     void Grow() 
     {
-
+        Transform segment = Instantiate(segmentPrefab);
+        segment.position = _segments[_segments.Count - 1].position;
+        _segments.Add(segment);
     }
 
     void ResetState()

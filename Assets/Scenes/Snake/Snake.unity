@@ -959,6 +959,12 @@ PrefabInstance:
       propertyPath: snakeSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 246641108175086315, guid: dd8766b50658df04ca7fb8e20f7d6705,
+        type: 3}
+      propertyPath: segmentPrefab
+      value: 
+      objectReference: {fileID: 5541283761276440169, guid: 000c39b0e789848fea9c2efef859d04b,
+        type: 3}
     - target: {fileID: 8546072172971409777, guid: dd8766b50658df04ca7fb8e20f7d6705,
         type: 3}
       propertyPath: m_Name
