@@ -23,11 +23,11 @@ public class ImageAnchorCreator : MonoBehaviour
     {
         foreach (var trackedImage in eventArgs.added)
         {
-            CreateAndPersistAnchor(trackedImage.transform.position, trackedImage.transform.rotation);
+            CreateAnchor(trackedImage.transform.position, trackedImage.transform.rotation);
         }
     }
 
-    private void CreateAndPersistAnchor(Vector3 position, Quaternion rotation)
+    private void CreateAnchor(Vector3 position, Quaternion rotation)
     {
         ARAnchor anchor = gameObject.AddComponent<ARAnchor>();
         anchor.transform.SetPositionAndRotation(position, rotation);

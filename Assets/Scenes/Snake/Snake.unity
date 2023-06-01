@@ -976,9 +976,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 246641108175086315, guid: dd8766b50658df04ca7fb8e20f7d6705,
         type: 3}
+      propertyPath: upWall
+      value: 
+      objectReference: {fileID: 1245755926}
+    - target: {fileID: 246641108175086315, guid: dd8766b50658df04ca7fb8e20f7d6705,
+        type: 3}
+      propertyPath: downWall
+      value: 
+      objectReference: {fileID: 99297226}
+    - target: {fileID: 246641108175086315, guid: dd8766b50658df04ca7fb8e20f7d6705,
+        type: 3}
+      propertyPath: leftWall
+      value: 
+      objectReference: {fileID: 2061677268}
+    - target: {fileID: 246641108175086315, guid: dd8766b50658df04ca7fb8e20f7d6705,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 246641108175086315, guid: dd8766b50658df04ca7fb8e20f7d6705,
+        type: 3}
+      propertyPath: rightWall
+      value: 
+      objectReference: {fileID: 1479640048}
     - target: {fileID: 246641108175086315, guid: dd8766b50658df04ca7fb8e20f7d6705,
         type: 3}
       propertyPath: snakeSpeed
