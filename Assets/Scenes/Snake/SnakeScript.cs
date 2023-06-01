@@ -9,7 +9,7 @@ public class SnakeScript : MonoBehaviour
     public Vector3 startPosition;
     public List<Transform> _segments;
     public Transform segmentPrefab;
-    public int initialSize = 4;
+    public int initialSize = 1;
 
     // these DO rotate the snake head, but they don't do it level to the plane of the board? I tried all three axes
     public Vector3 upRotate = new Vector3(0, 0, 0);
