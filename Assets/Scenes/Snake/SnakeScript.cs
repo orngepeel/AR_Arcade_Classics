@@ -75,31 +75,6 @@ public class SnakeScript : MonoBehaviour
     public void setDirection(string direction)
     {
         currentDirection = direction;
-
-        // logic for rotating snake head prefab here, since it will only get called on button press
-        if(direction == "up")
-        {
-            transform.localEulerAngles = upRotate;
-        }
-
-        // if down
-        else if(direction == "down")
-        {
-            transform.localEulerAngles = downRotate;
-        }
-
-        // if right
-        else if(direction == "right")
-        {
-            transform.localEulerAngles = rightRotate;
-        }
-
-        // if left
-        else if(direction == "left")
-        {
-            transform.localEulerAngles = leftRotate;
-        }
-
     }
 
     private void changeDirection(string direction)
@@ -107,24 +82,28 @@ public class SnakeScript : MonoBehaviour
         // if up
         if(direction == "up")
         {
+            transform.localEulerAngles = upRotate;
             transform.Translate(Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if down
         else if(direction == "down")
         {
+            transform.localEulerAngles = downRotate;
             transform.Translate(-Vector3.forward * snakeSpeed * Time.deltaTime);
         }
 
         // if right
         else if(direction == "right")
         {
+            transform.localEulerAngles = rightRotate;
             transform.Translate(Vector3.right * snakeSpeed * Time.deltaTime);
         }
 
         // if left
         else if(direction == "left")
         {
+            transform.localEulerAngles = leftRotate;
             transform.Translate(-Vector3.right * snakeSpeed * Time.deltaTime);
         }
     }
