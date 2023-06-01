@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class AnchorLoader : MonoBehaviour
 {
+    /// This class relies on there being one object with the "Container" tag in the scene.
+    /// It also assumes that the object with the tag is the child of this object.
     GameObject[] gameContainer;
 
     private string anchorPositionKey = "SavedAnchorPosition";
@@ -10,12 +12,14 @@ public class AnchorLoader : MonoBehaviour
 
     private void Start()
     {
+        /// Load game as soon as the anchor container in the scene is initialized
         gameContainer = GameObject.FindGameObjectsWithTag("Container");
         LoadGame();
     }
 
     private void Update()
     {
+        /// If for whatever reason the game did not load on start, load it ASAP
         if(!hasLoaded)
         {
             LoadGame();
@@ -24,6 +28,12 @@ public class AnchorLoader : MonoBehaviour
 
     private void LoadGame()
     {
+        /// <summary>
+        /// This method checks if an anchor's position and rotation are saved in PlayerPrefs.
+        /// If they are, it sets the position and rotation of this object accordingly.
+        /// It then centers the gameContainer object at the saved position and rotation.
+        /// This method should run once in the scene.
+        /// </summary>
         if (PlayerPrefs.HasKey(anchorPositionKey) && PlayerPrefs.HasKey(anchorRotationKey))
         {
             Vector3 savedPosition = StringToVector3(PlayerPrefs.GetString(anchorPositionKey));
