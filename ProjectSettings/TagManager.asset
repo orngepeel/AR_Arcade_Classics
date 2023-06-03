@@ -9,6 +9,8 @@ TagManager:
   - Obstacle
   - Food
   - Snake
+  - leftText
+  - rightText
   layers:
   - Default
   - TransparentFX
