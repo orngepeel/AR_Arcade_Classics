@@ -14,7 +14,7 @@ public class Food : MonoBehaviour
 
         // GridArea.bounds are showing (0, 0, -0.2) for both min and max -- need to get an actual boundary working
         float x = Random.Range(-0.75f, 0.75f);
-        float y = -0.15f;
+        float y = -0.2f;
         float z = Random.Range(-0.75f, 0.75f);
 
         // the y value also appears to be floating off outside of the actual bounds
