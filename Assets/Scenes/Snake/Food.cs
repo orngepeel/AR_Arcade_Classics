@@ -13,17 +13,15 @@ public class Food : MonoBehaviour
 
 
         // GridArea.bounds are showing (0, 0, -0.2) for both min and max -- need to get an actual boundary working
-        float x = Random.Range(bounds.min.x, bounds.max.x);
-        float y = Random.Range(bounds.min.y, bounds.max.y);
-        float z = Random.Range(bounds.min.z, bounds.max.z);
+        float x = Random.Range(-0.75f, 0.75f);
+        float y = -0.15f;
+        float z = Random.Range(-0.75f, 0.75f);
 
         // the y value also appears to be floating off outside of the actual bounds
         transform.position = new Vector3(x, y, z);
         
         //Output to the console the center and size of the Collider volume
 
-        Debug.Log("Collider bound Minimum : " + bounds.min);
-        Debug.Log("Collider bound Maximum : " + bounds.max);
     }
 
     // Start is called before the first frame update
