@@ -80,25 +80,25 @@ public class SnakeScript : MonoBehaviour
         // if up
         if(direction == "up")
         {
-            transform.localRotation = Quaternion.Euler(1, 0, 1);
+            transform.localRotation = originalRot * Quaternion.Euler(1, 0, 1);
         }
 
         // if down
         else if(direction == "down")
         {
-            transform.localRotation = Quaternion.Euler(1, 180, 1);
+            transform.localRotation = originalRot * Quaternion.Euler(1, 180, 1);
         }
 
         // if right
         else if(direction == "right")
         {
-            transform.localRotation = Quaternion.Euler(1, 90, 1);
+            transform.localRotation = originalRot * Quaternion.Euler(1, 90, 1);
         }
 
         // if left
         else if(direction == "left")
         {
-            transform.localRotation = Quaternion.Euler(1, -90, 1);
+            transform.localRotation = originalRot * Quaternion.Euler(1, -90, 1);
         }
     }
 
