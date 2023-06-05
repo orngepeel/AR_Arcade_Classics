@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 246641108175086315}
   - component: {fileID: 716511430590873620}
   - component: {fileID: 6165636170307124892}
+  - component: {fileID: 9086729588864055869}
   m_Layer: 0
   m_Name: SnakeHeadPrefab
   m_TagString: Snake
@@ -506,3 +507,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9086729588864055869
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546072172971409777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
