@@ -13,9 +13,9 @@ public class SnakeScript : MonoBehaviour
 
     // these DO rotate the snake head, but they don't do it level to the plane of the board? I tried all three axes
     public Vector3 upRotate = new Vector3(0, 0, 0);
-    public Vector3 downRotate = new Vector3(0, 0, 180);
-    public Vector3 rightRotate = new Vector3(0, 0, 90);
-    public Vector3 leftRotate = new Vector3(0, 0, -90);
+    public Vector3 downRotate = new Vector3(0, 180, 0);
+    public Vector3 rightRotate = new Vector3(0, 90, 0);
+    public Vector3 leftRotate = new Vector3(0, -90, 0);
 
     string currentDirection;
 
@@ -31,7 +31,7 @@ public class SnakeScript : MonoBehaviour
     void Update()
     {
 
-        changeDirection(currentDirection);
+        moveSnake();
 
         for (int i = _segments.Count - 1; i > 0; i--) {
             _segments[i].position = _segments[i - 1].position;
@@ -75,36 +75,35 @@ public class SnakeScript : MonoBehaviour
     public void setDirection(string direction)
     {
         currentDirection = direction;
-    }
-
-    private void changeDirection(string direction)
-    {
+         Quaternion originalRot = transform.rotation;    
+ 
         // if up
         if(direction == "up")
         {
-            //transform.eulerAngles = upRotate;
-            transform.Translate(Vector3.forward * snakeSpeed * .01f);
+            transform.localRotation = Quaternion.Euler(1, 0, 1);
         }
 
         // if down
         else if(direction == "down")
         {
-            //transform.eulerAngles = downRotate;
-            transform.Translate(-Vector3.forward * snakeSpeed * .01f);
+            transform.localRotation = Quaternion.Euler(1, 180, 1);
         }
 
         // if right
         else if(direction == "right")
         {
-            //transform.eulerAngles = rightRotate;
-            transform.Translate(Vector3.right * snakeSpeed * .01f);
+            transform.localRotation = Quaternion.Euler(1, 90, 1);
         }
 
         // if left
         else if(direction == "left")
         {
-            //transform.eulerAngles = leftRotate;
-            transform.Translate(-Vector3.right * snakeSpeed * .01f);
+            transform.localRotation = Quaternion.Euler(1, -90, 1);
         }
+    }
+
+    private void moveSnake()
+    {
+        transform.Translate(Vector3.forward * snakeSpeed * .01f);
     }
 }
