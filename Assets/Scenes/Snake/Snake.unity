@@ -270,7 +270,7 @@ PrefabInstance:
       value: Food
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8132239644821518003, guid: ae7ece40817704472ae1c069d56726ac, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ae7ece40817704472ae1c069d56726ac, type: 3}
 --- !u!4 &186302029 stripped
 Transform:
@@ -402,7 +402,7 @@ PrefabInstance:
     - target: {fileID: 3441809636703677705, guid: 1fbd795b61cd44487954fb10d83ddb7a,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4365896431559815301, guid: 1fbd795b61cd44487954fb10d83ddb7a,
         type: 3}
@@ -453,6 +453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154716758888463992, guid: 1fbd795b61cd44487954fb10d83ddb7a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6827533914456329683, guid: 1fbd795b61cd44487954fb10d83ddb7a,
         type: 3}
@@ -552,6 +557,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6864967274723831633, guid: 1fbd795b61cd44487954fb10d83ddb7a, type: 3}
     - {fileID: 5605650228508713828, guid: 1fbd795b61cd44487954fb10d83ddb7a, type: 3}
+    - {fileID: 8166675983390784893, guid: 1fbd795b61cd44487954fb10d83ddb7a, type: 3}
+    - {fileID: 8185154433413279598, guid: 1fbd795b61cd44487954fb10d83ddb7a, type: 3}
+    - {fileID: 906971750352076280, guid: 1fbd795b61cd44487954fb10d83ddb7a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1fbd795b61cd44487954fb10d83ddb7a, type: 3}
 --- !u!4 &664766416 stripped
 Transform:
@@ -1303,6 +1311,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1511591297}
     m_Modifications:
+    - target: {fileID: -5554279862650144181, guid: dd8766b50658df04ca7fb8e20f7d6705,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5554279862650144181, guid: dd8766b50658df04ca7fb8e20f7d6705,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8546072172971409777, guid: dd8766b50658df04ca7fb8e20f7d6705,
         type: 3}
       propertyPath: m_Name
@@ -1392,7 +1410,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &1511591296
 GameObject:
   m_ObjectHideFlags: 0
