@@ -79,31 +79,33 @@ public class SnakeScript : MonoBehaviour
 
     private void changeDirection(string direction)
     {
+         Quaternion originalRot = transform.rotation;    
+ 
         // if up
         if(direction == "up")
         {
-            transform.eulerAngles = upRotate;
+            transform.rotation = Quaternion.Euler(1, 0, 1);
             transform.Translate(Vector3.forward * snakeSpeed * .01f);
         }
 
         // if down
         else if(direction == "down")
         {
-            transform.eulerAngles = downRotate;
+            transform.rotation = Quaternion.Euler(1, 180, 1);
             transform.Translate(-Vector3.forward * snakeSpeed * .01f);
         }
 
         // if right
         else if(direction == "right")
         {
-            transform.eulerAngles = rightRotate;
+            transform.rotation = Quaternion.Euler(1, 90, 1);
             transform.Translate(Vector3.right * snakeSpeed * .01f);
         }
 
         // if left
         else if(direction == "left")
         {
-            transform.eulerAngles = leftRotate;
+            transform.rotation = Quaternion.Euler(1, -90, 1);
             transform.Translate(-Vector3.right * snakeSpeed * .01f);
         }
     }
