@@ -24,7 +24,7 @@ public class SnakeScript : MonoBehaviour
     {
         _segments = new List<Transform>();
         _segments.Add(this.transform);
-        snakeSpeed = transform.localScale.x;
+        snakeSpeed = GetComponent<MeshRenderer>().bounds.size.x;
         startPosition = transform.position;
     }
 
