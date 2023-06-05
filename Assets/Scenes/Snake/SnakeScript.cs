@@ -105,28 +105,5 @@ public class SnakeScript : MonoBehaviour
     private void moveSnake()
     {
         transform.Translate(Vector3.forward * snakeSpeed * .01f);
-        // // if up
-        // if(direction == "up")
-        // {
-        //     transform.Translate(Vector3.forward * snakeSpeed * .01f);
-        // }
-
-        // // if down
-        // else if(direction == "down")
-        // {
-        //     transform.Translate(-Vector3.forward * snakeSpeed * .01f);
-        // }
-
-        // // if right
-        // else if(direction == "right")
-        // {
-        //     transform.Translate(Vector3.right * snakeSpeed * .01f);
-        // }
-
-        // // if left
-        // else if(direction == "left")
-        // {
-        //     transform.Translate(-Vector3.right * snakeSpeed * .01f);
-        // }
     }
 }
