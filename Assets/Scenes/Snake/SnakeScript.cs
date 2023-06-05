@@ -31,7 +31,7 @@ public class SnakeScript : MonoBehaviour
     void Update()
     {
 
-        changeDirection(currentDirection);
+        moveSnake();
 
         for (int i = _segments.Count - 1; i > 0; i--) {
             _segments[i].position = _segments[i - 1].position;
@@ -75,38 +75,58 @@ public class SnakeScript : MonoBehaviour
     public void setDirection(string direction)
     {
         currentDirection = direction;
-    }
-
-    private void changeDirection(string direction)
-    {
          Quaternion originalRot = transform.rotation;    
  
         // if up
         if(direction == "up")
         {
             transform.localRotation = Quaternion.Euler(1, 0, 1);
-            transform.Translate(Vector3.forward * snakeSpeed * .01f);
         }
 
         // if down
         else if(direction == "down")
         {
             transform.localRotation = Quaternion.Euler(1, 180, 1);
-            transform.Translate(-Vector3.forward * snakeSpeed * .01f);
         }
 
         // if right
         else if(direction == "right")
         {
             transform.localRotation = Quaternion.Euler(1, 90, 1);
-            transform.Translate(Vector3.right * snakeSpeed * .01f);
         }
 
         // if left
         else if(direction == "left")
         {
             transform.localRotation = Quaternion.Euler(1, -90, 1);
-            transform.Translate(-Vector3.right * snakeSpeed * .01f);
         }
+    }
+
+    private void moveSnake()
+    {
+        transform.Translate(Vector3.forward * snakeSpeed * .01f);
+        // // if up
+        // if(direction == "up")
+        // {
+        //     transform.Translate(Vector3.forward * snakeSpeed * .01f);
+        // }
+
+        // // if down
+        // else if(direction == "down")
+        // {
+        //     transform.Translate(-Vector3.forward * snakeSpeed * .01f);
+        // }
+
+        // // if right
+        // else if(direction == "right")
+        // {
+        //     transform.Translate(Vector3.right * snakeSpeed * .01f);
+        // }
+
+        // // if left
+        // else if(direction == "left")
+        // {
+        //     transform.Translate(-Vector3.right * snakeSpeed * .01f);
+        // }
     }
 }
