@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - board
+  - Container
+  - Obstacle
+  - Food
+  - Snake
+  - leftText
+  - rightText
   layers:
   - Default
   - TransparentFX
