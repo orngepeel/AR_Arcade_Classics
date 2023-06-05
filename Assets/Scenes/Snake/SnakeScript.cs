@@ -13,9 +13,9 @@ public class SnakeScript : MonoBehaviour
 
     // these DO rotate the snake head, but they don't do it level to the plane of the board? I tried all three axes
     public Vector3 upRotate = new Vector3(0, 0, 0);
-    public Vector3 downRotate = new Vector3(0, 0, 180);
-    public Vector3 rightRotate = new Vector3(0, 0, 90);
-    public Vector3 leftRotate = new Vector3(0, 0, -90);
+    public Vector3 downRotate = new Vector3(0, 180, 0);
+    public Vector3 rightRotate = new Vector3(0, 90, 0);
+    public Vector3 leftRotate = new Vector3(0, -90, 0);
 
     string currentDirection;
 
@@ -82,28 +82,28 @@ public class SnakeScript : MonoBehaviour
         // if up
         if(direction == "up")
         {
-            //transform.eulerAngles = upRotate;
+            transform.eulerAngles = upRotate;
             transform.Translate(Vector3.forward * snakeSpeed * .01f);
         }
 
         // if down
         else if(direction == "down")
         {
-            //transform.eulerAngles = downRotate;
+            transform.eulerAngles = downRotate;
             transform.Translate(-Vector3.forward * snakeSpeed * .01f);
         }
 
         // if right
         else if(direction == "right")
         {
-            //transform.eulerAngles = rightRotate;
+            transform.eulerAngles = rightRotate;
             transform.Translate(Vector3.right * snakeSpeed * .01f);
         }
 
         // if left
         else if(direction == "left")
         {
-            //transform.eulerAngles = leftRotate;
+            transform.eulerAngles = leftRotate;
             transform.Translate(-Vector3.right * snakeSpeed * .01f);
         }
     }
