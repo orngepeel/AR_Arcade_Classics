@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class SnakeScript : MonoBehaviour
 {
     public float steerSpeed = 180;
-    public float snakeSpeed = 1;
+    public float snakeSpeed;
     public Vector3 startPosition;
     public List<Transform> _segments;
     public Transform segmentPrefab;
@@ -24,6 +24,7 @@ public class SnakeScript : MonoBehaviour
     {
         _segments = new List<Transform>();
         _segments.Add(this.transform);
+        snakeSpeed = transform.localScale.x;
         startPosition = transform.position;
     }
 
